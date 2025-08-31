@@ -70,7 +70,7 @@ class FireStoreUtils {
     bool isExist = false;
 
     await fireStore.collection(CollectionName.users).doc(uid).get().then(
-      (value) {
+          (value) {
         if (value.exists) {
           isExist = true;
         } else {
@@ -143,7 +143,7 @@ class FireStoreUtils {
         .then((value) {
       for (var element in value.docs) {
         OnBoardingModel documentModel =
-            OnBoardingModel.fromJson(element.data());
+        OnBoardingModel.fromJson(element.data());
         onBoardingModel.add(documentModel);
       }
     }).catchError((error) {
@@ -159,14 +159,14 @@ class FireStoreUtils {
         .where("zoneId", isEqualTo: Constant.selectedZone!.id.toString())
         .get();
     await Future.forEach(currencyQuery.docs,
-        (QueryDocumentSnapshot<Map<String, dynamic>> document) {
-      try {
-        log(document.data().toString());
-        giftCardModelList.add(VendorModel.fromJson(document.data()));
-      } catch (e) {
-        debugPrint('FireStoreUtils.get Currency Parse error $e');
-      }
-    });
+            (QueryDocumentSnapshot<Map<String, dynamic>> document) {
+          try {
+            log(document.data().toString());
+            giftCardModelList.add(VendorModel.fromJson(document.data()));
+          } catch (e) {
+            debugPrint('FireStoreUtils.get Currency Parse error $e');
+          }
+        });
     return giftCardModelList;
   }
 
@@ -309,9 +309,9 @@ class FireStoreUtils {
           .get()
           .then((value) {
         Constant.minimumDepositToRideAccept =
-            value.data()!['minimumDepositToRideAccept'];
+        value.data()!['minimumDepositToRideAccept'];
         Constant.minimumAmountToWithdrawal =
-            value.data()!['minimumAmountToWithdrawal'];
+        value.data()!['minimumAmountToWithdrawal'];
         Constant.driverLocationUpdate = value.data()!['driverLocationUpdate'];
         Constant.singleOrderReceive = value.data()!['singleOrderReceive'];
         Constant.selectedMapType = value.data()!["selectedMapType"];
@@ -351,7 +351,7 @@ class FireStoreUtils {
         .then((value) {
       for (var element in value.docs) {
         WalletTransactionModel walletTransactionModel =
-            WalletTransactionModel.fromJson(element.data());
+        WalletTransactionModel.fromJson(element.data());
         walletTransactionList.add(walletTransactionModel);
       }
     }).catchError((error) {
@@ -379,7 +379,7 @@ class FireStoreUtils {
         .then((value) async {
       if (value.exists) {
         MercadoPagoModel mercadoPagoModel =
-            MercadoPagoModel.fromJson(value.data()!);
+        MercadoPagoModel.fromJson(value.data()!);
         await Preferences.setString(
             Preferences.mercadoPago, jsonEncode(mercadoPagoModel.toJson()));
       }
@@ -413,7 +413,7 @@ class FireStoreUtils {
         .then((value) async {
       if (value.exists) {
         FlutterWaveModel flutterWaveModel =
-            FlutterWaveModel.fromJson(value.data()!);
+        FlutterWaveModel.fromJson(value.data()!);
         await Preferences.setString(
             Preferences.flutterWave, jsonEncode(flutterWaveModel.toJson()));
       }
@@ -447,7 +447,7 @@ class FireStoreUtils {
         .then((value) async {
       if (value.exists) {
         WalletSettingModel walletSettingModel =
-            WalletSettingModel.fromJson(value.data()!);
+        WalletSettingModel.fromJson(value.data()!);
         await Preferences.setString(Preferences.walletSettings,
             jsonEncode(walletSettingModel.toJson()));
       }
@@ -470,7 +470,7 @@ class FireStoreUtils {
         .then((value) async {
       if (value.exists) {
         CodSettingModel codSettingModel =
-            CodSettingModel.fromJson(value.data()!);
+        CodSettingModel.fromJson(value.data()!);
         await Preferences.setString(
             Preferences.codSettings, jsonEncode(codSettingModel.toJson()));
       }
@@ -664,8 +664,8 @@ class FireStoreUtils {
         taxAmount = taxAmount +
             Constant.calculateTax(
                 amount: (subTotal -
-                        double.parse(orderModel.discount.toString()) -
-                        specialDiscount)
+                    double.parse(orderModel.discount.toString()) -
+                    specialDiscount)
                     .toString(),
                 taxModel: element);
       }
@@ -685,10 +685,10 @@ class FireStoreUtils {
 
   static sendTopUpMail(
       {required String amount,
-      required String paymentMethod,
-      required String tractionId}) async {
+        required String paymentMethod,
+        required String tractionId}) async {
     EmailTemplateModel? emailTemplateModel =
-        await FireStoreUtils.getEmailTemplates(Constant.walletTopup);
+    await FireStoreUtils.getEmailTemplates(Constant.walletTopup);
 
     String newString = emailTemplateModel!.message.toString();
     newString = newString.replaceAll(
@@ -721,27 +721,27 @@ class FireStoreUtils {
         .where('vendorID', isEqualTo: id)
         .get();
     await Future.forEach(productsQuery.docs,
-        (QueryDocumentSnapshot<Map<String, dynamic>> document) {
-      if (document.data().containsKey("categoryID") &&
-          document.data()['categoryID'].toString().isNotEmpty) {
-        prodTagList.add(document.data()['categoryID']);
-      }
-    });
+            (QueryDocumentSnapshot<Map<String, dynamic>> document) {
+          if (document.data().containsKey("categoryID") &&
+              document.data()['categoryID'].toString().isNotEmpty) {
+            prodTagList.add(document.data()['categoryID']);
+          }
+        });
     QuerySnapshot<Map<String, dynamic>> catQuery = await fireStore
         .collection(CollectionName.vendorCategories)
         .where('publish', isEqualTo: true)
         .get();
     await Future.forEach(catQuery.docs,
-        (QueryDocumentSnapshot<Map<String, dynamic>> document) {
-      Map<String, dynamic> catDoc = document.data();
-      if (catDoc.containsKey("id") &&
-          catDoc['id'].toString().isNotEmpty &&
-          catDoc.containsKey("title") &&
-          catDoc['title'].toString().isNotEmpty &&
-          prodTagList.contains(catDoc['id'])) {
-        tagList.add(catDoc['title']);
-      }
-    });
+            (QueryDocumentSnapshot<Map<String, dynamic>> document) {
+          Map<String, dynamic> catDoc = document.data();
+          if (catDoc.containsKey("id") &&
+              catDoc['id'].toString().isNotEmpty &&
+              catDoc.containsKey("title") &&
+              catDoc['title'].toString().isNotEmpty &&
+              prodTagList.contains(catDoc['id'])) {
+            tagList.add(catDoc['title']);
+          }
+        });
     return tagList;
   }
 
@@ -858,7 +858,7 @@ class FireStoreUtils {
     ShowToastDialog.showLoader("Please wait");
     var uniqueID = const Uuid().v4();
     Reference upload =
-        FirebaseStorage.instance.ref().child('images/$uniqueID.png');
+    FirebaseStorage.instance.ref().child('images/$uniqueID.png');
     UploadTask uploadTask = upload.putFile(image);
     var storageRef = (await uploadTask.whenComplete(() {})).ref;
     var downloadUrl = await storageRef.getDownloadURL();
@@ -890,7 +890,7 @@ class FireStoreUtils {
       ShowToastDialog.showLoader("Uploading video...");
       final String uniqueID = const Uuid().v4();
       final Reference videoRef =
-          FirebaseStorage.instance.ref('videos/$uniqueID.mp4');
+      FirebaseStorage.instance.ref('videos/$uniqueID.mp4');
       final UploadTask uploadTask = videoRef.putFile(
         video,
         SettableMetadata(contentType: 'video/mp4'),
@@ -906,7 +906,7 @@ class FireStoreUtils {
 
       final String thumbnailID = const Uuid().v4();
       final Reference thumbnailRef =
-          FirebaseStorage.instance.ref('thumbnails/$thumbnailID.jpg');
+      FirebaseStorage.instance.ref('thumbnails/$thumbnailID.jpg');
       final UploadTask thumbnailUploadTask = thumbnailRef.putData(
         thumbnail.readAsBytesSync(),
         SettableMetadata(contentType: 'image/jpeg'),
@@ -932,10 +932,10 @@ class FireStoreUtils {
   static Future<String> uploadVideoThumbnailToFireStorage(File file) async {
     var uniqueID = const Uuid().v4();
     Reference upload =
-        FirebaseStorage.instance.ref().child('thumbnails/$uniqueID.png');
+    FirebaseStorage.instance.ref().child('thumbnails/$uniqueID.png');
     UploadTask uploadTask = upload.putFile(file);
     var downloadUrl =
-        await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
+    await (await uploadTask.whenComplete(() {})).ref.getDownloadURL();
     return downloadUrl.toString();
   }
 
@@ -950,7 +950,7 @@ class FireStoreUtils {
         .then((value) async {
       if (value.exists) {
         DriverDocumentModel newDriverDocumentModel =
-            DriverDocumentModel.fromJson(value.data()!);
+        DriverDocumentModel.fromJson(value.data()!);
         documentsList = newDriverDocumentModel.documents!;
         var contain = newDriverDocumentModel.documents!
             .where((element) => element.documentId == documents.documentId);
@@ -962,7 +962,7 @@ class FireStoreUtils {
           driverDocumentModel.documents = documentsList;
         } else {
           var index = newDriverDocumentModel.documents!.indexWhere(
-              (element) => element.documentId == documents.documentId);
+                  (element) => element.documentId == documents.documentId);
 
           driverDocumentModel.id = getCurrentUid();
           driverDocumentModel.type = "driver";
@@ -1032,7 +1032,7 @@ class FireStoreUtils {
         .then((value) {
       for (var element in value.docs) {
         WithdrawalModel walletTransactionModel =
-            WithdrawalModel.fromJson(element.data());
+        WithdrawalModel.fromJson(element.data());
         walletTransactionList.add(walletTransactionModel);
       }
     }).catchError((error) {
@@ -1044,7 +1044,7 @@ class FireStoreUtils {
   static sendPayoutMail(
       {required String amount, required String payoutrequestid}) async {
     EmailTemplateModel? emailTemplateModel =
-        await FireStoreUtils.getEmailTemplates(Constant.payoutRequest);
+    await FireStoreUtils.getEmailTemplates(Constant.payoutRequest);
 
     String body = emailTemplateModel!.subject.toString();
     body = body.replaceAll("{userid}", Constant.userModel!.id.toString());
@@ -1123,15 +1123,15 @@ class FireStoreUtils {
             userId: referralModel!.referralBy,
             isTopup: true,
             note:
-                "You referral user has complete his this order #${orderModel.id}",
+            "You referral user has complete his this order #${orderModel.id}",
             paymentStatus: "success");
 
         await FireStoreUtils.setWalletTransaction(transactionModel)
             .then((value) async {
           if (value == true) {
             await FireStoreUtils.updateUserWallet(
-                    amount: Constant.referralAmount.toString(),
-                    userId: referralModel!.referralBy.toString())
+                amount: Constant.referralAmount.toString(),
+                userId: referralModel!.referralBy.toString())
                 .then((value) {});
           }
         });

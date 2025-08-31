@@ -368,12 +368,12 @@ class WalletScreen extends StatelessWidget {
                                                   themeChange,
                                                   controller.selectedDropDownValue
                                                               .value ==
-                                                          "Daily"
+                                                          "Daily".tr
                                                       ? controller
                                                           .dailyEarningList
                                                       : controller.selectedDropDownValue
                                                                   .value ==
-                                                              "Monthly"
+                                                              "Monthly".tr
                                                           ? controller
                                                               .monthlyEarningList
                                                           : controller

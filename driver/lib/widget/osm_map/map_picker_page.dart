@@ -56,7 +56,7 @@ class MapPickerPage extends StatelessWidget {
                   urlTemplate:
                       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                   subdomains: const ['a', 'b', 'c'],
-                  userAgentPackageName: 'com.example.app',
+                  userAgentPackageName: 'com.lazeez.driver.android',
                 ),
                 MarkerLayer(
                   markers: controller.pickedPlace.value != null

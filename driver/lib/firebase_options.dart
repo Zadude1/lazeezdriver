@@ -50,23 +50,24 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'YOUR_ANDROID_API_KEY',
-    appId: 'YOUR_ANDROID_APP_ID',
-    messagingSenderId: 'YOUR_ANDROID_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_ANDROID_PROJECT_ID',
-    databaseURL: 'YOUR_ANDROID_DATABASE_URL',
-    storageBucket: 'YOUR_ANDROID_STORAGE_BUCKET',
+    apiKey: 'AIzaSyD5fQEMdH-xppVCMzw67IstHvqeAyYXhIQ',
+    appId: '1:305013485493:android:04a22d64592daf118233fc',
+    messagingSenderId: '305013485493',
+    projectId: 'lazez-32651',
+    databaseURL: 'https://lazez-32651-default-rtdb.firebaseio.com',
+    storageBucket: 'lazez-32651.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'YOUR_IOS_API_KEY',
-    appId: 'YOUR_IOS_APP_ID',
-    messagingSenderId: 'YOUR_IOS_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_IOS_PROJECT_ID',
-    databaseURL: 'YOUR_IOS_DATABASE_URL',
-    storageBucket: 'YOUR_IOS_STORAGE_BUCKET',
-    androidClientId: 'YOUR_ANDROID_CLIENT_ID',
-    iosClientId: 'YOUR_IOS_CLIENT_ID',
-    iosBundleId: 'YOUR_IOS_BUNDLE_ID',
+    apiKey: 'AIzaSyBUS72Z3P47G1YCNWTu_hJV6LRFzHwKzvE',
+    appId: '1:305013485493:ios:313d1f7c17282cf68233fc',
+    messagingSenderId: '305013485493',
+    projectId: 'lazez-32651',
+    databaseURL: 'https://lazez-32651-default-rtdb.firebaseio.com',
+    storageBucket: 'lazez-32651.firebasestorage.app',
+    androidClientId: '305013485493-9eitd2lijs10o5j4928f5gt63ioor0fu.apps.googleusercontent.com',
+    iosClientId: '305013485493-lri06osk6k0jpl5idosb2kcvnitj24u6.apps.googleusercontent.com',
+    iosBundleId: 'com.lazeez.driver.ios',
   );
+
 }

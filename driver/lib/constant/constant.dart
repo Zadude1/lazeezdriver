@@ -35,7 +35,7 @@ class Constant {
   static LocationData? locationDataFinal;
 
   static UserModel? userModel;
-  static const globalUrl = "https://foodie.siswebapp.com/";
+  static const globalUrl = "https://lazeez.shop/admin/";
 
   static bool singleOrderReceive = false;
   static String driverLocationUpdate = '50';

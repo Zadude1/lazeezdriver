@@ -176,7 +176,7 @@ class HomeScreen extends StatelessWidget {
                                             urlTemplate:
                                                 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                                             userAgentPackageName:
-                                                'com.example.app',
+                                                'com.lazeez.driver.android',
                                           ),
                                           flutterMap.MarkerLayer(
                                               markers: controller.currentOrder

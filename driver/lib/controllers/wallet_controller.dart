@@ -65,7 +65,7 @@ class WalletController extends GetxController {
   RxList<OrderModel> monthlyEarningList = <OrderModel>[].obs;
   RxList<OrderModel> yearlyEarningList = <OrderModel>[].obs;
 
-  RxList<String> dropdownValue = ["Daily", "Monthly", "Yearly"].obs;
+  RxList<String> dropdownValue = ["Daily".tr, "Monthly".tr, "Yearly".tr].obs;
   RxString selectedDropDownValue = "Daily".obs;
 
   RxInt selectedTabIndex = 0.obs;
